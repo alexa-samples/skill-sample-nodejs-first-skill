@@ -4,7 +4,7 @@ This workshop is designed to teach you how to learn the core fundamentals of bui
 
 # Step-by-step Instructions
 
-You can get started here: [Module 1: Build A Simple Skill In 5 Minutes](./module-1/README.md)
+You can get started here: [Cake Walk: Build an Engaging Alexa Skill](https://developer.amazon.com/alexa-skills-kit/courses/cake-walk)
 
 # The Skill
 
