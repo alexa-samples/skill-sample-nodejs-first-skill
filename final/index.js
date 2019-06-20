@@ -38,7 +38,7 @@ const HasBirthdayLaunchRequestHandler = {
             userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);    
         } catch (error) {
             if (error.name !== 'ServiceError') {
-                return handlerInput.responseBuilder.speak("There was a problem connecting to the service.").getResponse();
+                return handlerInput.responseBuilder.speak("サービスとの接続がうまくできなかったようです。").getResponse();
             }
             console.log('error', error.message);
         }
@@ -47,7 +47,7 @@ const HasBirthdayLaunchRequestHandler = {
         const oneDay = 24*60*60*1000;
         
         // getting the current date with the time
-        const currentDateTime = new Date(new Date().toLocaleString("en-US", {timeZone: userTimeZone}));
+        const currentDateTime = new Date(new Date().toLocaleString("ja-JP", {timeZone: userTimeZone}));
         // removing the time from the date because it affects our difference calculation
         const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
         const currentYear = currentDate.getFullYear();
@@ -66,10 +66,10 @@ const HasBirthdayLaunchRequestHandler = {
         // setting the default speakOutput to Happy xth Birthday!! 
         // Alexa will automatically correct the ordinal for you.
         // no need to worry about when to use st, th, rd
-        let speakOutput = `Happy ${currentYear - year}th birthday!`;
+        let speakOutput = `${currentYear - year}歳のお誕生日、おめでとう！`;
         if (currentDate.getTime() !== nextBirthday) {
             const diffDays = Math.round(Math.abs((currentDate.getTime() - nextBirthday)/oneDay));
-            speakOutput = `Welcome back. It looks like there are ${diffDays} days until your ${currentYear - year}th birthday.`
+            speakOutput = `あなたの${currentYear - year}歳のお誕生日まで、あと${diffDays}日です。`
         }
         
         return handlerInput.responseBuilder
@@ -82,8 +82,8 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello! Welcome to Cake walk. What is your birthday?';
-        const repromptOutput = 'I was born Nov. 6th, 2015. When were you born?';    
+        const speakOutput = 'ケークウォークへようこそ。あなたの誕生日はいつですか？';
+        const repromptOutput = 'ちなみに、私の誕生日は二千十五年十一月六日生です。あなたの誕生日はいつですか？';  
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -112,7 +112,7 @@ const BirthdayIntentHandler = {
         attributesManager.setPersistentAttributes(birthdayAttributes);
         await attributesManager.savePersistentAttributes();    
         
-        const speakOutput = `Thanks, I'll remember that you were born ${month} ${day} ${year}.`;
+        const speakOutput = `ありがとう。あなたの誕生日は${year}年${month}月${day}日ですね？思えておきます。`;
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -126,11 +126,11 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'このスキルは、あなたの誕生日までの日数を教えてくれます。「アレクサ、ケークウォークをスタート」と言ってください。';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            //.reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -141,7 +141,7 @@ const CancelAndStopIntentHandler = {
                 || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'さようなら！';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -167,7 +167,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
-        const speakOutput = `You just triggered ${intentName}`;
+        const speakOutput = `${intentName}がトリガーされました`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -185,7 +185,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speakOutput = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speakOutput = `すみません、うまく理解できませんでした。もう一度言ってください。`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
