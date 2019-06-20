@@ -9,87 +9,82 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speechText = 'Hello! Welcome to Cake walk. What is your birthday?';
-        const repromptText = 'I was born Nov. 6th, 2015. When were you born?';    
-
+        const speechText = 'こんにちは、ケークウォークへようこそ。あなたの誕生日を教えてください。';
+        const repromptText = '私は二千十四年十一月六日に生まれました。あなたの誕生日はいつですか？';
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(repromptText)
             .getResponse();
     }
 };
+
 const HasBirthdayLaunchRequestHandler = {
     canHandle(handlerInput) {
-        console.log(JSON.stringify(handlerInput.requestEnvelope.request));
         const attributesManager = handlerInput.attributesManager;
         const sessionAttributes = attributesManager.getSessionAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
+
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest' &&
             year &&
             month &&
             day;
+
     },
     async handle(handlerInput) {
-        
         const serviceClientFactory = handlerInput.serviceClientFactory;
         const deviceId = handlerInput.requestEnvelope.context.System.device.deviceId;
         
         const attributesManager = handlerInput.attributesManager;
         const sessionAttributes = attributesManager.getSessionAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
+
+        // TODO:: 設定APIを使って現在の日付を取得し、ユーザーの誕生日までの日数を計算します
+        // TODO:: ユーザーの誕生日当日におめでとうと言います
         let userTimeZone;
         try {
             const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);    
+            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);
         } catch (error) {
             if (error.name !== 'ServiceError') {
-                return handlerInput.responseBuilder.speak("There was a problem connecting to the service.").getResponse();
+                return handlerInput.responseBuilder.speak("サービスへの接続がうまく行きませんでした。").getResponse();
             }
             console.log('error', error.message);
         }
-        console.log('userTimeZone', userTimeZone);
         
-        const oneDay = 24*60*60*1000;
-        
-        // getting the current date with the time
-        const currentDateTime = new Date(new Date().toLocaleString("en-US", {timeZone: userTimeZone}));
-        // removing the time from the date because it affects our difference calculation
+        // 現在の日付と時刻を取得します
+        const currentDateTime = new Date(new Date().toLocaleString("ja-JP", {timeZone: userTimeZone}));
+        // 日数計算の結果に影響するため、日付から時刻を取り除きます
         const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
         const currentYear = currentDate.getFullYear();
-        
-        console.log('currentDateTime:', currentDateTime);
-        console.log('currentDate:', currentDate);
-        
-        // getting getting the next birthday
+        // 次の誕生日を取得します
         let nextBirthday = Date.parse(`${month} ${day}, ${currentYear}`);
         
-        // adjust the nextBirthday by one year if the current date is after their birthday
+        // 現在の日付が誕生日よりも後の場合、nextBirthdayに1年足します
         if (currentDate.getTime() > nextBirthday) {
             nextBirthday = Date.parse(`${month} ${day}, ${currentYear + 1}`);
         }
+
+        const oneDay = 24*60*60*1000;
+        // デフォルトのspeechTextを「X歳の誕生日、おめでとうございます」に置き換えます。
+        let speechText = `${currentYear - year}歳のお誕生日、おめでとうございます！`;
         
-        // setting the default speechText to Happy xth Birthday!! 
-        // Alexa will automatically correct the ordinal for you.
-        // no need to worry about when to use st, th, rd
-        let speechText = `Happy ${currentYear - year}th birthday!`;
         if (currentDate.getTime() !== nextBirthday) {
             const diffDays = Math.round(Math.abs((currentDate.getTime() - nextBirthday)/oneDay));
-            speechText = `Welcome back. It looks like there are ${diffDays} days until your ${currentYear - year}th birthday.`
+            speechText = `おかえりなさい、${currentYear - year}歳のお誕生日まで、残り${diffDays}日です。`
         }
-        
+
         return handlerInput.responseBuilder
             .speak(speechText)
             .getResponse();
     }
 };
+
 const CaptureBirthdayIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -103,29 +98,28 @@ const CaptureBirthdayIntentHandler = {
         const attributesManager = handlerInput.attributesManager;
         
         const birthdayAttributes = {
-            "year": year,
-            "month": month,
-            "day": day
-            
+            "year" : year,
+            "month" : month,
+            "day" : day
         };
         attributesManager.setPersistentAttributes(birthdayAttributes);
-        await attributesManager.savePersistentAttributes();    
+        await attributesManager.savePersistentAttributes();       
         
-        const speechText = `Thanks, I'll remember that you were born ${month} ${day} ${year}.`;
+        const speechText = `ありがとうございます。誕生日は${year}年${month}月${day}日ですね。`;
+
         return handlerInput.responseBuilder
             .speak(speechText)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
-
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'You can say hello to me! How can I help?';
+        const speechText = '「ハロー」と言ってみてください。どうぞ';
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -140,7 +134,7 @@ const CancelAndStopIntentHandler = {
                 || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speechText = 'Goodbye!';
+        const speechText = 'さようなら';
         return handlerInput.responseBuilder
             .speak(speechText)
             .getResponse();
@@ -166,7 +160,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
-        const speechText = `You just triggered ${intentName}`;
+        const speechText = `${intentName}がトリガーされました。`;
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -184,7 +178,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speechText = `ごめんなさい、うまく理解できませんでした。もう一度言ってみてください。`;
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -194,26 +188,27 @@ const ErrorHandler = {
 };
 
 const LoadBirthdayInterceptor = {
-    async process(handlerInput) {
+   async process(handlerInput) {
         const attributesManager = handlerInput.attributesManager;
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
+
         if (year && month && day) {
-            attributesManager.setSessionAttributes(sessionAttributes);
+           attributesManager.setSessionAttributes(sessionAttributes);
         }
     }
-}
+};
 
 // This handler acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
 exports.handler = Alexa.SkillBuilders.custom()
+    .withApiClient(new Alexa.DefaultApiClient())
     .withPersistenceAdapter(
-        new persistenceAdapter.S3PersistenceAdapter({bucketName:process.env.S3_PERSISTENCE_BUCKET})
+    new persistenceAdapter.S3PersistenceAdapter({bucketName:process.env.S3_PERSISTENCE_BUCKET})
     )
     .addRequestHandlers(
         HasBirthdayLaunchRequestHandler,
@@ -223,10 +218,9 @@ exports.handler = Alexa.SkillBuilders.custom()
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler) // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
-    .addErrorHandlers(
-        ErrorHandler)
     .addRequestInterceptors(
         LoadBirthdayInterceptor
     )
-    .withApiClient(new Alexa.DefaultApiClient())
+    .addErrorHandlers(
+        ErrorHandler)
     .lambda();
