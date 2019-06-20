@@ -12,17 +12,17 @@ Once you're ready you move on to [Module 4: Use the Settings API ](../module-4/R
 
 ### Contents
 
-*  [en-US.json](./en-US.json)
+*  [ja-JP.json](./ja-JP.json)
 *  [index.js](./index.js)
 *  [package.json](./package.json)
  
-#### en-US.json 
+#### ja-JP.json 
 ---
 This is your skill's interaction model. You can use this file to create your voice user interface. To use this file:
 
 1. From the [alexa developer console](https://developer.amazon.com) click on the **Build** tab.
 2. On the left hand side click on **JSON Editor**. 
-3. Copy the contents of [en-US.json](./en-US.json) and paste it over the contents of the editor
+3. Copy the contents of [ja-JP.json](./ja-JP.json) and paste it over the contents of the editor
 4. Click **Save Model**
 5. Click **Build Model**
 
