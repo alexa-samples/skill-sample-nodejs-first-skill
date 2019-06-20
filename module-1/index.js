@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speechText = 'Hello! Welcome to cake walk. That was a piece of cake! Bye!';
+        const speechText = 'こんにちは。ケークウォークです。';
         return handlerInput.responseBuilder
             .speak(speechText)
             //.reprompt(speechText)
@@ -21,7 +21,7 @@ const HelloWorldIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speechText = 'Hello World!';
+        const speechText = 'ハローワールド';
         return handlerInput.responseBuilder
             .speak(speechText)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -34,7 +34,7 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'You can say hello to me! How can I help?';
+        const speechText = '「ハロー」と言ってみてください。どうぞ';
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -49,7 +49,7 @@ const CancelAndStopIntentHandler = {
                 || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speechText = 'Goodbye!';
+        const speechText = 'さようなら';
         return handlerInput.responseBuilder
             .speak(speechText)
             .getResponse();
@@ -75,7 +75,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
-        const speechText = `You just triggered ${intentName}`;
+        const speechText = `${intentName}がトリガーされました。`;
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -93,7 +93,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speechText = `ごめんなさい、うまく理解できませんでした。もう一度言ってみてください。`;
 
         return handlerInput.responseBuilder
             .speak(speechText)

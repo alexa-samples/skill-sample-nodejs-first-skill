@@ -1,0 +1,37 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "ケークウォーク",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "こんにちは",
+                        "ハロー",
+                        "こんにちはと言って",
+                        "ハローワールド",
+                        "ハローと言って"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        }
+    }
+}
