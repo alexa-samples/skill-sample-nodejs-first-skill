@@ -1,6 +1,6 @@
 # シンプルなスキルを作るワークショップ
 
-This workshop is designed to teach you how to learn the core fundamentals of building an Alexa skill.It is modular so if you know the basics you can skip to the module that interests you the most. In this repository you will find the necessary JSON and code files for each module. 
+このワークショップでは、Alexaスキル開発の基礎を学ぶ方法を教えられるようにデザインされています。もし既に基本を知っているなら、それをスキップして一番今日のあるところから初めても構いません。このレポジトリでは各モジュールで必要なJSONとコードファイルが格納されています。
 
 # ステップバイステップのインストラクション
 
