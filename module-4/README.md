@@ -13,17 +13,17 @@ If for some reason your code is isn't working you can check out the final versio
 
 ### Contents
 
-*  [en-US.json](./en-US.json)
+*  [ja-JP.json](./ja-JP.json)
 *  [index.js](./index.js)
 *  [package.json](./package.json)
 
-#### en-US.json 
+#### ja-JP.json 
 ---
 This is your skill's interaction model. You can use this file to create your voice user interface. To use this file:
 
 1. From the [alexa developer console](https://developer.amazon.com) click on the **Build** tab.
 2. On the left hand side click on **JSON Editor**. 
-3. Copy the contents of [en-US.json](./en-US.json) and paste it over the contents of the editor.
+3. Copy the contents of [ja-JP.json](./ja-JP.json) and paste it over the contents of the editor.
 4. Click **Save Model**
 5. Click **Build Model**
 
@@ -33,7 +33,7 @@ This is your skill's backend code. It's the logic that handles the requests that
 
 1. From the [alexa developer console](https://developer.amazon.com) click on the **Code** tab.
 2. Open the **index.js** file by selecting the tab or double-clicking on the file name on the right-hand side.
-3. Copy the contents of [en-US.json](./en-US.json) and paste it over the contents of the editor
+3. Copy the contents of [ja-JP.json](./ja-JP.json) and paste it over the contents of the editor
 4. Click **Save**.
 5. Click **Deploy**.
 

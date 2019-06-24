@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "cake walk",
+            "invocationName": "ケークウォーク",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -19,13 +19,11 @@
                     "name": "HelloWorldIntent",
                     "slots": [],
                     "samples": [
-                        "hello",
-                        "how are you",
-                        "say hi world",
-                        "say hi",
-                        "hi",
-                        "say hello world",
-                        "say hello"
+                        "こんにちは",
+                        "ハロー",
+                        "こんにちはと言って",
+                        "ハローワールド",
+                        "ハローと言って"
                     ]
                 },
                 {
