@@ -61,13 +61,14 @@ const HasBirthdayLaunchRequestHandler = {
         const currentDateTime = new Date(new Date().toLocaleString("ja-JP", {timeZone: userTimeZone}));
         // 日数計算の結果に影響するため、日付から時刻を取り除きます
         const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
-        const currentYear = currentDate.getFullYear();
+        let currentYear = currentDate.getFullYear();
         // 次の誕生日を取得します
         let nextBirthday = Date.parse(`${month} ${day}, ${currentYear}`);
         
         // 現在の日付が誕生日よりも後の場合、nextBirthdayに1年足します
         if (currentDate.getTime() > nextBirthday) {
             nextBirthday = Date.parse(`${month} ${day}, ${currentYear + 1}`);
+            currentYear++;
         }
 
         const oneDay = 24*60*60*1000;
