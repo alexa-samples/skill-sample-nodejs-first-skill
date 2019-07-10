@@ -50,17 +50,18 @@ const HasBirthdayLaunchRequestHandler = {
         const currentDateTime = new Date(new Date().toLocaleString("en-US", {timeZone: userTimeZone}));
         // removing the time from the date because it affects our difference calculation
         const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
-        const currentYear = currentDate.getFullYear();
+        let currentYear = currentDate.getFullYear();
         
         console.log('currentDateTime:', currentDateTime);
         console.log('currentDate:', currentDate);
         
-        // getting getting the next birthday
+        // getting the next birthday
         let nextBirthday = Date.parse(`${month} ${day}, ${currentYear}`);
         
         // adjust the nextBirthday by one year if the current date is after their birthday
         if (currentDate.getTime() > nextBirthday) {
             nextBirthday = Date.parse(`${month} ${day}, ${currentYear + 1}`);
+            currentYear++;
         }
         
         // setting the default speakOutput to Happy xth Birthday!! 
