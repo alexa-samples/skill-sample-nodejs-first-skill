@@ -95,7 +95,7 @@ const LaunchRequestHandler = {
 const BirthdayIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'BirthdayIntent';
+            && handlerInput.requestEnvelope.request.intent.name === 'CaptureBirthdayIntent';
     },
     async handle(handlerInput) {
         const year = handlerInput.requestEnvelope.request.intent.slots.year.value;
