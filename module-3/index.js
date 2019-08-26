@@ -9,11 +9,11 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speechText = 'Hello! I am Cakewalk. What is your birthday?';
+        const speakOutput = 'Hello! I am Cakewalk. What is your birthday?';
         const repromptText = 'I was born Nov. 6th, 2015. When were you born?';    
 
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(speakOutput)
             .reprompt(repromptText)
             .getResponse();
     }
@@ -46,10 +46,10 @@ const HasBirthdayLaunchRequestHandler = {
         // TODO:: Use the settings API to get current date and then compute how many days until user's birthday
         // TODO:: Say Happy birthday on the user's birthday
         
-        const speechText = `Welcome back. It looks like there are X more days until your y-th birthday.`;
+        const speakOutput = `Welcome back. It looks like there are X more days until your y-th birthday.`;
         
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(speakOutput)
             .getResponse();
     }
 };
@@ -74,9 +74,9 @@ const CaptureBirthdayIntentHandler = {
         attributesManager.setPersistentAttributes(birthdayAttributes);
         await attributesManager.savePersistentAttributes();    
         
-        const speechText = `Thanks, I'll remember that you were born ${month} ${day} ${year}.`;
+        const speakOutput = `Thanks, I'll remember that you were born ${month} ${day} ${year}.`;
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
@@ -88,11 +88,11 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'You can say hello to me! How can I help?';
+        const speakOutput = 'You can say hello to me! How can I help?';
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(speechText)
+            .speak(speakOutput)
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -103,9 +103,9 @@ const CancelAndStopIntentHandler = {
                 || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speechText = 'Goodbye!';
+        const speakOutput = 'Goodbye!';
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(speakOutput)
             .getResponse();
     }
 };
@@ -129,10 +129,10 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
-        const speechText = `You just triggered ${intentName}`;
+        const speakOutput = `You just triggered ${intentName}`;
 
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
@@ -147,11 +147,11 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speakOutput = `Sorry, I couldn't understand what you said. Please try again.`;
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(speechText)
+            .speak(speakOutput)
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -171,7 +171,7 @@ const LoadBirthdayInterceptor = {
     }
 }
 
-// This handler acts as the entry point for your skill, routing all request and response
+// The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
 exports.handler = Alexa.SkillBuilders.custom()
