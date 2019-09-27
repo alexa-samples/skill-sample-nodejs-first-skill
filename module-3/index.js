@@ -10,7 +10,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Hello! I am Cakewalk. What is your birthday?';
-        const repromptText = 'I was born Nov. 6th, 2015. When were you born?';    
+        const repromptText = 'I was born Nov. 6th, 2014. When were you born?';    
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
