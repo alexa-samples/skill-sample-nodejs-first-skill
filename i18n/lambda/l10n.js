@@ -45,4 +45,20 @@ module.exports = {
             HELP_MSG: `Je peux me souvenir de votre date de naissance. Dites-moi votre jour, mois et année de naissance ou bien dites-moi simplement "sauve ma fête" et je vous guiderai. Quel est votre choix ?`,
         }
     },
+    it: {
+        translation: {
+            WELCOME_MSG: `Ciao! Benvenuti a Buon Compleanno. Qual'è la tua data di nascita?`,
+            WELCOME_REPROMPT_MSG: `Io sono nata il 6 novembre 2014. E tu invece?`,
+            WELCOME_BACK_MSG: `Ciao di nuovo! Manca {{count}} giorno a quando avrai {{age}} anni.`,
+            WELCOME_BACK_MSG_plural: `Ciao di nuovo! Mancano {{count}} giorni a quando avrai {{age}} anni.`,
+            HAPPY_BIRTHDAY_MSG: `Buon compleanno! Oggi compi {{count}} anno!`,
+            HAPPY_BIRTHDAY_MSG_plural: `Buon compleanno! Oggi compi {{count}} anni!`,
+            REGISTER_BIRTHDAY_MSG: `Grazie, mi ricorderò la tua data di nascita: {{day}} {{month}} {{year}}.`,
+            HELP_MSG: `Posso segnarmi la tua data di nascita. Dimmi pure la data oppure dimmi di ricordami il tuo compleanno. Cosa preferisci?`,
+            GOODBYE_MSG: `A presto!`,
+            REFLECTOR_MSG: `Hai invocato l'intento {{intentName}}`,
+            ERROR_MSG: `Scusa, non ho capito. Puoi ripetere?`,
+            ERROR_TIMEZONE_MSG: `Non ho potuto determinare il tuo fuso orario. Verifica la configurazione del tuo dispositivo, e riprova.`
+        }
+    },
 }
