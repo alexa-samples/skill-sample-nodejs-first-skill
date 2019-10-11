@@ -61,4 +61,19 @@ module.exports = {
             ERROR_TIMEZONE_MSG: `Non ho potuto determinare il tuo fuso orario. Verifica la configurazione del tuo dispositivo, e riprova.`
         }
     },
+    "ja-JP": {
+        translation: {
+            WELCOME_MSG: `こんにちは、ケークウォークへようこそ。あなたの誕生日はいつですか？`,
+            WELCOME_REPROMPT_MSG: `私は2004年10月6日に生まれました。あなたの誕生日はいつですか？`,
+            WELCOME_BACK_MSG: `おかえりなさい。{{age}}歳のお誕生日まで、あと{{count}}日です。`,
+            WELCOME_BACK_MSG_plural: `おかえりなさい。{{age}}歳のお誕生日まで、残り{{count}}日です。`,
+            HAPPY_BIRTHDAY_MSG: `{{age}}歳のお誕生日、おめでとうございます！`,
+            REGISTER_BIRTHDAY_MSG: `ありがとうございます。誕生日は {{year}}年 {{month}}月 {{day}}日ですね？`,
+            HELP_MSG: `あなたの誕生日を言うと、その日付を記憶します。もしくは、「私の誕生日を登録して」と言うと、詳しくご案内します。どちらにしますか？`,
+            GOODBYE_MSG: `さようなら`,
+            REFLECTOR_MSG: `{{intentName}}がトリガーされました。`,
+            ERROR_MSG: `ごめんなさい、うまく理解できませんでした。もう一度言ってみてください。`,
+            ERROR_TIMEZONE_MSG: `タイムゾーンを特定できませんでした。Alexaアプリでデバイスの設定を開き、タイムゾーンが正しく選択されていることを確認したあとで、もう一度試してください。`
+        }
+    }
 }
