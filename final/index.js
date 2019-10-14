@@ -43,13 +43,11 @@ const HasBirthdayLaunchRequestHandler = {
             console.log('error', error.message);
         }
         console.log('userTimeZone', userTimeZone);
-
-        const locale = handlerInput.requestEnvelope.request.locale;
         
         const oneDay = 24*60*60*1000;
         
         // getting the current date with the time
-        const currentDateTime = new Date(new Date().toLocaleString(locale, {timeZone: userTimeZone}));
+        const currentDateTime = new Date(new Date().toLocaleString("en-US", {timeZone: userTimeZone}));
         // removing the time from the date because it affects our difference calculation
         const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
         let currentYear = currentDate.getFullYear();
