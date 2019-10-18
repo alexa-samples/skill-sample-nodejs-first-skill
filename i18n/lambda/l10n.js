@@ -75,5 +75,20 @@ module.exports = {
             ERROR_MSG: `ごめんなさい、うまく理解できませんでした。もう一度言ってみてください。`,
             ERROR_TIMEZONE_MSG: `タイムゾーンを特定できませんでした。Alexaアプリでデバイスの設定を開き、タイムゾーンが正しく選択されていることを確認したあとで、もう一度試してください。`
         }
+    },
+    "hi-IN": {
+        translation: {
+            WELCOME_MSG: `नमस्ते. Cake Walk में आपका स्वागत. आपका जनमदिन कब हैं?`,
+            WELCOME_REPROMPT_MSG: `मेरा जन्म 6 नवंबर, 2014 को हुआ था. आप कब पैदा हुए थे?`,
+            WELCOME_BACK_MSG: `वापसी पर स्वागत है. आपके {{age}} वे जनमदिन तक {{count}} दिन हैं`,
+            WELCOME_BACK_MSG_plural: `आपके {{age}} वे जनमदिन तक {{count}} दिन हैं`,
+            HAPPY_BIRTHDAY_MSG: `{{age}} वां जन्मदिन मुबारक हो`,
+            REGISTER_BIRTHDAY_MSG: `शुक्रिया. मुझे याद होगा कि आप {{month}} {{day}} {{year}} मैं पैदा हुए थेैं`,
+            HELP_MSG: `आप मुझे अपनी जन्मतिथि बता सकते हैं और मैं note कर लूंगा. आप यह भी कह सकते हैं, "मेरा जन्मदिन register करें. आप कौन सा प्रयास करना चाहेंगे?`,
+            GOODBYE_MSG: `अलवादी `,
+            REFLECTOR_MSG: `आपने {{intentName}} trigger किया हैं `,
+            ERROR_MSG: `Sorry, मैं वो समझ नहीं पायी. क्या आप दोहरा सकते हैं `,
+            ERROR_TIMEZONE_MSG: `Sorry. मैं आपके समयक्षेत्र का निर्धारण नहीं कर सकता. आपकी Device Settings में timezone select कर दो और एक और बार skill खोलो.`
+        }
     }
 }
