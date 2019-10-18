@@ -16,6 +16,12 @@
                 },
                 "ja-JP": {
                     "name": "ケークウォーク"
+                },
+                "en-IN": {
+                    "name": "cake walk"
+                },
+                "hi-IN": {
+                    "name": "cake walk"
                 }
             },
             "isAvailableWorldwide": true,
