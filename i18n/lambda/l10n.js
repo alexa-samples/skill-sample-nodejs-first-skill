@@ -61,6 +61,22 @@ module.exports = {
             ERROR_TIMEZONE_MSG: `Non ho potuto determinare il tuo fuso orario. Verifica la configurazione del tuo dispositivo, e riprova.`
         }
     },
+    es: {
+        translation: {
+            WELCOME_MSG: `Hola! Bienvenidos a Feliz Cumpleaños. Cual es tu fecha de nacimiento?`,
+            WELCOME_REPROMPT_MSG: `Yo nací el 6 de noviembre 2014. Y tú?`,
+            WELCOME_BACK_MSG: `Hola otra vez! Falta {{count}} día para que cumplas {{age}} año.`, 
+            WELCOME_BACK_MSG_plural: `Hola otra vez! Faltan {{count}} días para que cumplas {{age}} años.`,
+            HAPPY_BIRTHDAY_MSG: `Feliz Cumpleaños! Hoy cumples {{count}} año!`,
+            HAPPY_BIRTHDAY_MSG_plural: `Feliz Cumpleaños! Hoy cumples {{count}} años!`,
+            REGISTER_BIRTHDAY_MSG: `Gracias, me acordaré de tu fecha de nacimiento: {{day}} {{month}} {{year}}.`,
+            HELP_MSG: `Puedo apuntarme tu fecha de nacimiento. Dime la fecha o dime de acordarme de tu cumpleaños. Qué prefieres?`,
+            GOODBYE_MSG: `Hasta luego!`,
+            REFLECTOR_MSG: `Has invocado {{intentName}}`,
+            ERROR_MSG: `Perdona, no entendido. Puedes repetir?`,
+            ERROR_TIMEZONE_MSG: `No he potido determinar tu zona horaria. Verifica la configuración de tu dispositivo, y intenta otra vez.`
+        }
+    },
     "ja-JP": {
         translation: {
             WELCOME_MSG: `こんにちは、ケークウォークへようこそ。あなたの誕生日はいつですか？`,
