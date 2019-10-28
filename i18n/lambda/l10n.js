@@ -21,6 +21,21 @@ module.exports = {
             ERROR_TIMEZONE_MSG: `I can't determine your timezone. Please check your device settings and make sure a timezone was selected. After that please reopen the skill and try again!`
         }
     },
+    pt: {
+        translation: {
+            WELCOME_MSG: `Olá! Boas vindas ao Feliz Aniversário. Qual é a data do seu aniversário?`,
+            WELCOME_REPROMPT_MSG: `Eu nasci em 6 de novembro de 2014. Quando você nasceu?`,
+            WELCOME_BACK_MSG: `Boas vindas de volta. Parece que faltam {{count}} dias até o seu {{age}}th aniversário.`,
+            WELCOME_BACK_MSG_plural: `Boas vindas de volta. Parece que faltam {{count}} dias até o seu {{age}}th aniversário.`,
+            HAPPY_BIRTHDAY_MSG: `Feliz {{age}}th aniversário!`,
+            REGISTER_BIRTHDAY_MSG: `Obrigada, eu vou lembrar que você nasceu no dia {{day}} de {{month}} de {{year}}.`,
+            HELP_MSG: `Você pode me dizer a sua data de nascimento e eu vou anotar. Você também pode simplesmente dizer "anote meu aniversário" e eu vou guiar você. Qual dessas opções você gostaria de tentar?`,
+            GOODBYE_MSG: `Tchau!`,
+            REFLECTOR_MSG: `Você acionou {{intentName}}`,
+            ERROR_MSG: `Desculpe, não entendi o que você falou. Você poderia reformular??`,
+            ERROR_TIMEZONE_MSG: `Não consegui determinar o seu fuso horário. Por favor verifique as configurações do seu aparelho e certifique-se de que o fuso horário está selecionado. Depois disso, abra a skill e tente novamente!`
+        }
+    },
     fr: {
         translation: {
             WELCOME_MSG: `Bonjour! Bienvenue sur le Génie des Anniversaires. Quelle est votre date de naissance ?`,
