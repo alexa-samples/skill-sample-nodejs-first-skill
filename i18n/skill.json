@@ -31,6 +31,9 @@
                 },
                 "es-US": {
                     "name": "feliz cumpleaños"
+                },
+                "de-DE": {
+                    "name": "Herzlichen Glückwunsch"
                 }
             },
             "isAvailableWorldwide": true,

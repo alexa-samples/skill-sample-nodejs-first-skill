@@ -21,6 +21,21 @@ module.exports = {
             ERROR_TIMEZONE_MSG: `I can't determine your timezone. Please check your device settings and make sure a timezone was selected. After that please reopen the skill and try again!`
         }
     },
+    de: {
+        translation: {
+            WELCOME_MSG: `Hallo! Herzlich willkommen zu Herzlichen Glückwunsch. Wann hast du Geburtstag?`,
+            WELCOME_REPROMPT_MSG: `Ich bin am 6. November 2014 geboren. Wann bist du geboren?`,
+            WELCOME_BACK_MSG: `Willkommen zurück. Es sieht so aus, als ob noch {{count}} Tag bis zu Deinem {{age}}. Geburtstag verbleibt.`,
+            WELCOME_BACK_MSG_plural: `Willkommen zurück. Es sieht so aus, als ob noch {{count}} Tage zu Deinem {{age}}. Geburtstag verbleiben.`,
+            HAPPY_BIRTHDAY_MSG: `Alles Gute zum {{age}}. Geburtstag!`,
+            REGISTER_BIRTHDAY_MSG: `Danke, ich werde mir merken, dass du am {{day}} {{month}} {{year}} geboren wurdest.`,
+            HELP_MSG: `Du kannst mir sagen, wann du Geburtstag hast und ich werde es mir merken. Du kannst auch einfach "merke dir meinen Geburtstag" sagen und ich werde dir weiterhelfen. Was würdest du gerne probieren?`,
+            GOODBYE_MSG: `Tschüss!`,
+            REFLECTOR_MSG: `Du hast gerade {{intentName}} gestartet.`,
+            ERROR_MSG: `Sorry, ich konnte nicht verstehen was du gesagt hast. Kannst du das bitte umformulieren?`,
+            ERROR_TIMEZONE_MSG: `Ich kann deine Zeitzone nicht bestimmen. Bitte überprüfe deine Geräteoptionen und stelle sicher, dass eine Zeitzone ausgeewählt ist. Öffne danach den Skill wieder und probiere es erneut!`
+        }
+    },
     fr: {
         translation: {
             WELCOME_MSG: `Bonjour! Bienvenue sur le Génie des Anniversaires. Quelle est votre date de naissance ?`,
