@@ -4,6 +4,8 @@
 
 The files in this folder represent how Calk Walk should appear at the end this module. If you're stuck you can compare your files with these to figure out where you went wrong. You can also use these files to skip ahead.
 
+**If you are coming from the [Cake Walk Workshop](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/resources/training-resources/cake-walk)**: This folder maps to [Workshop Module 4](https://developer.amazon.com/alexa/alexa-skills-kit/resources/training-resources/cake-walk/cake-walk-4)
+
 ### Step-by-step Instructions
 
 You can find the instructions here: [Collecting slots turn-by-turn](https://developer.amazon.com/alexa-skills-kit/courses/cake-walk-4)
