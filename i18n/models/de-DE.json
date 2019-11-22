@@ -28,7 +28,7 @@
             },
             {
               "name": "day",
-              "type": "AMAZON.NUMBER"
+              "type": "AMAZON.Ordinal"
             },
             {
               "name": "year",
@@ -66,7 +66,7 @@
             },
             {
               "name": "day",
-              "type": "AMAZON.NUMBER",
+              "type": "AMAZON.Ordinal",
               "elicitationRequired": true,
               "confirmationRequired": false,
               "prompts": {
