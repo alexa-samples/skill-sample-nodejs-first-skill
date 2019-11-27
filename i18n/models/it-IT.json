@@ -78,7 +78,7 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.Number",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -87,7 +87,7 @@
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "type": "AMAZON.Number",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
