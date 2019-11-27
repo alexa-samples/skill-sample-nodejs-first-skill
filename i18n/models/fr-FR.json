@@ -24,7 +24,7 @@
                     "slots": [
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.NUMBER",
                             "samples": [
                                 "{day}",
                                 "le {day}",
@@ -91,7 +91,7 @@
                     "slots": [
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
