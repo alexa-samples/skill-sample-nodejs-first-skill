@@ -14,9 +14,7 @@ const persistenceAdapter = require('ask-sdk-s3-persistence-adapter');
 const i18n = require('i18next');
 // We import a language strings object containing all of our strings.
 // The keys for each string will then be referenced in our code, e.g. handlerInput.t('WELCOME_MSG')
-const languageStrings = require('./l10n');
-// We will use the moment.js package in order to make sure that we calculate the remaining days to the user's birthday correctly
-const moment = require('moment');
+const languageStrings = require('./languageStrings');
 
 /////////////////////////////////
 // Handlers Definition
