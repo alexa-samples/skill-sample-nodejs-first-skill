@@ -24,15 +24,33 @@
                     "slots": [
                         {
                             "name": "month",
-                            "type": "AMAZON.Month"
+                            "type": "AMAZON.Month",
+                            "samples": [
+                                "sono nata a {month}",
+                                "sono nato a {month}",
+                                "sono nato ad {month}",
+                                "il mese di {month}",
+                                "{month}"
+                            ]
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "il {day}",
+                                "sono nato il {day}",
+                                "{day}"
+                            ]
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "sono del {year}",
+                                "nell'anno {year}",
+                                "nel {year}",
+                                "{year}"
+                            ]
                         }
                     ],
                     "samples": [
@@ -78,7 +96,7 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -87,7 +105,7 @@
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -118,7 +136,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Sono nata il 6. Che giorno del mese è il tuo compleanno?"
+                        "value": "Io sono nata il sei. Che giorno del mese è il tuo compleanno?"
                     }
                 ]
             },
