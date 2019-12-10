@@ -21,6 +21,21 @@ module.exports = {
             ERROR_TIMEZONE_MSG: `I can't determine your timezone. Please check your device settings and make sure a timezone was selected. After that please reopen the skill and try again!`
         }
     },
+    pt: {
+        translation: {
+            WELCOME_MSG: `Olá! Boas vindas à skill Feliz Aniversário. Quando é o seu aniversário?`,
+            WELCOME_REPROMPT_MSG: `Eu nasci no dia 6 de novembro de 2014. Quando você nasceu?`,
+            WELCOME_BACK_MSG: `Que bom que você está de volta! Parece que falta {{count}} dia até o seu <say-as interpret-as="ordinal">{{age}}</say-as> aniversário.`,
+            WELCOME_BACK_MSG_plural: `Que bom que você está de volta! Parece que faltam {{count}} dias até o seu <say-as interpret-as="ordinal">{{age}}</say-as> aniversário.`,
+            HAPPY_BIRTHDAY_MSG: `Feliz <say-as interpret-as="ordinal">{{age}}</say-as> aniversário!`,
+            REGISTER_BIRTHDAY_MSG: `Obrigada, eu vou lembrar que você nasceu no dia {{day}} de {{month}} de {{year}}.`,
+            HELP_MSG: `Você pode me dizer o dia em que você nasceu e eu vou me lembrar. Você também pode dizer, "anote meu aniversário" eu irei guiar sua interação. Qual deles você quer tentar?`,
+            GOODBYE_MSG: `Tchau!`,
+            REFLECTOR_MSG: `Você acabou de acionar o {{intentName}}`,
+            ERROR_MSG: `Desculpe, eu não entendi o que você falou. Pode reformular?`,
+            ERROR_TIMEZONE_MSG: `Não consegui determinar seu fuso horário. Por favor verifique as configurações de seu aparelho e certifique-se de que um fuso horário está selecionado. Depois disso, reinicie a skill e tente novamente!`
+        }
+    },
     de: {
         translation: {
             WELCOME_MSG: `Hallo! Herzlich willkommen zu Herzlichen Glückwunsch. Wann hast du Geburtstag?`,
