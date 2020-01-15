@@ -16,6 +16,8 @@ const i18n = require('i18next');
 // The keys for each string will then be referenced in our code, e.g. handlerInput.t('WELCOME_MSG')
 const languageStrings = require('./languageStrings');
 
+const moment = require('moment');
+
 /////////////////////////////////
 // Handlers Definition
 /////////////////////////////////

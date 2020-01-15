@@ -2,32 +2,23 @@
     "manifest": {
         "publishingInformation": {
             "locales": {
-                "en-US": {
-                    "name": "Cake Walk"
+                "de-DE": {
+                    "name": "Herzlichen Glückwunsch"
                 },
-                "en-GB": {
+                "en-AU": {
                     "name": "Cake Walk"
                 },
                 "en-CA": {
                     "name": "Cake Walk"
                 },
-                "fr-FR": {
-                    "name": "Joyeux Anniversaire"
-                },
-                "fr-CA": {
-                    "name": "Bonne Fête"
-                },
-                "it-IT": {
-                    "name": "Buon Compleanno"
-                },
-                "ja-JP": {
-                    "name": "ケークウォーク"
+                "en-GB": {
+                    "name": "Cake Walk"
                 },
                 "en-IN": {
                     "name": "cake walk"
                 },
-                "hi-IN": {
-                    "name": "cake walk"
+                "en-US": {
+                    "name": "Cake Walk"
                 },
                 "es-ES": {
                     "name": "feliz cumpleaños"
@@ -37,6 +28,21 @@
                 },
                 "es-US": {
                     "name": "feliz cumpleaños"
+                },
+                "fr-CA": {
+                    "name": "Bonne Fête"
+                },
+                "fr-FR": {
+                    "name": "Joyeux Anniversaire"
+                },
+                "hi-IN": {
+                    "name": "cake walk"
+                },
+                "it-IT": {
+                    "name": "Buon Compleanno"
+                },
+                "ja-JP": {
+                    "name": "ケークウォーク"
                 },
                 "pt-BR": {
                     "name": "Feliz Aniversário"
