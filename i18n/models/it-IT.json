@@ -35,22 +35,11 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.NUMBER",
-                            "samples": [
-                                "il {day}",
-                                "sono nato il {day}",
-                                "{day}"
-                            ]
+                            "type": "AMAZON.NUMBER"
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.NUMBER",
-                            "samples": [
-                                "sono del {year}",
-                                "nell'anno {year}",
-                                "nel {year}",
-                                "{year}"
-                            ]
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
                         }
                     ],
                     "samples": [
@@ -136,7 +125,11 @@
                 "variations": [
                     {
                         "type": "PlainText",
+<<<<<<< HEAD
                         "value": "Io sono nata il sei. Che giorno del mese è il tuo compleanno?"
+=======
+                        "value": "Sono nata il seis. Che giorno del mese è il tuo compleanno?"
+>>>>>>> perfomed multiple fixes; details on the Pull Request description
                     }
                 ]
             },

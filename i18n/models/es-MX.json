@@ -28,11 +28,11 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.NUMBER"
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
                         }
                     ],
                     "samples": [
@@ -78,7 +78,7 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {

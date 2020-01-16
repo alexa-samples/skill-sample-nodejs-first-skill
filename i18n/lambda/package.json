@@ -14,6 +14,6 @@
       "aws-sdk": "^2.326.0",
       "ask-sdk-s3-persistence-adapter": "^2.0.0",
       "i18next": "^15.0.5",
-      "moment": "^2.24.0"
+      "moment-timezone": "^0.5.27"
     }
   }

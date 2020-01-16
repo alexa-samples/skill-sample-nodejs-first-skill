@@ -28,11 +28,11 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.NUMBER"
                         },
                         {
                             "name": "year",
-                            "type": "AMAZON.Number"
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
                         }
                     ],
                     "samples": [
@@ -40,7 +40,6 @@
                         "{day} de {month}",
                         "el año {year}",
                         "en {year}",
-                        "nací en {year}",
                         "nací en {year}",
                         "el {day} de {month}",
                         "el día {day} de {month}",
@@ -78,7 +77,7 @@
                         },
                         {
                             "name": "day",
-                            "type": "AMAZON.Ordinal",
+                            "type": "AMAZON.NUMBER",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -118,7 +117,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Nací el 6. Qué día del mes es tu cumpleaños?"
+                        "value": "Nací el seis. Qué día del mes es tu cumpleaños?"
                     }
                 ]
             },
