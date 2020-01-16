@@ -2,41 +2,47 @@
     "manifest": {
         "publishingInformation": {
             "locales": {
-                "en-US": {
-                    "name": "Cake Walk"
+                "de-DE": {
+                    "name": "Herzlichen Glückwunsch"
                 },
-                "en-GB": {
+                "en-AU": {
                     "name": "Cake Walk"
                 },
                 "en-CA": {
                     "name": "Cake Walk"
                 },
-                "fr-FR": {
-                    "name": "Joyeux Anniversaire"
+                "en-GB": {
+                    "name": "Cake Walk"
+                },
+                "en-IN": {
+                    "name": "Cake Walk"
+                },
+                "en-US": {
+                    "name": "Cake Walk"
+                },
+                "es-ES": {
+                    "name": "Feliz Cumpleaños"
+                },
+                "es-MX": {
+                    "name": "Feliz Cumpleaños"
+                },
+                "es-US": {
+                    "name": "Feliz Cumpleaños"
                 },
                 "fr-CA": {
                     "name": "Bonne Fête"
+                },
+                "fr-FR": {
+                    "name": "Joyeux Anniversaire"
+                },
+                "hi-IN": {
+                    "name": "Cake Walk"
                 },
                 "it-IT": {
                     "name": "Buon Compleanno"
                 },
                 "ja-JP": {
                     "name": "ケークウォーク"
-                },
-                "en-IN": {
-                    "name": "cake walk"
-                },
-                "hi-IN": {
-                    "name": "cake walk"
-                },
-                "es-ES": {
-                    "name": "feliz cumpleaños"
-                },
-                "es-MX": {
-                    "name": "feliz cumpleaños"
-                },
-                "es-US": {
-                    "name": "feliz cumpleaños"
                 },
                 "pt-BR": {
                     "name": "Feliz Aniversário"

@@ -14,7 +14,9 @@ const persistenceAdapter = require('ask-sdk-s3-persistence-adapter');
 const i18n = require('i18next');
 // We import a language strings object containing all of our strings.
 // The keys for each string will then be referenced in our code, e.g. handlerInput.t('WELCOME_MSG')
-const languageStrings = require('./l10n');
+const languageStrings = require('./languageStrings');
+// We will use the moment.js package in order to make sure that we calculate the date correctly
+const moment = require('moment-timezone');
 
 /////////////////////////////////
 // Handlers Definition
@@ -26,31 +28,31 @@ const languageStrings = require('./l10n');
  */
 const HasBirthdayLaunchRequestHandler = {
     canHandle(handlerInput) {
-        const {attributesManager} = handlerInput;
+        const { attributesManager } = handlerInput;
         const sessionAttributes = attributesManager.getSessionAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest' 
-            && year 
-            && month 
+
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
+            && year
+            && month
             && day;
     },
     async handle(handlerInput) {
-        const {serviceClientFactory, requestEnvelope, attributesManager} = handlerInput;
+        const { serviceClientFactory, requestEnvelope, attributesManager } = handlerInput;
         const deviceId = Alexa.getDeviceId(requestEnvelope)
         const sessionAttributes = attributesManager.getSessionAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
+
         let userTimeZone;
         try {
             const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);    
+            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);
         } catch (error) {
             if (error.name !== 'ServiceError') {
                 const errorSpeechText = handlerInput.t('ERROR_TIMEZONE_MSG');
@@ -59,38 +61,44 @@ const HasBirthdayLaunchRequestHandler = {
             console.log('error', error.message);
         }
         console.log('userTimeZone', userTimeZone);
+
+        // getting the current date with the time set to the start of the day, aka 00:00AM
+        const currentDate = moment().tz(userTimeZone).startOf('day')
+        // getting the current year
+        const currentYear = currentDate.year();
         
-        const oneDay = 24*60*60*1000;
-        
-        // getting the current date with the time
-        const locale = Alexa.getLocale(requestEnvelope);
-        const currentDateTime = new Date(new Date().toLocaleString(locale, {timeZone: userTimeZone}));
-        // removing the time from the date because it affects our difference calculation
-        const currentDate = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate());
-        let currentYear = currentDate.getFullYear();
-        
-        console.log('currentDateTime:', currentDateTime);
-        console.log('currentDate:', currentDate);
+        console.log('currentDate:', currentDate.toString());
         
         // getting the next birthday
-        let nextBirthday = Date.parse(`${month} ${day}, ${currentYear}`);
-        
-        // adjust the nextBirthday by one year if the current date is after their birthday
-        if (currentDate.getTime() > nextBirthday) {
-            nextBirthday = Date.parse(`${month} ${day}, ${currentYear + 1}`);
-            currentYear++;
-        }
-        
+        const dateStr = currentYear.toString() + ' ' + month + ' ' + day.toString();
+        const locale = Alexa.getLocale(requestEnvelope);
+        let nextBirthday = moment(dateStr, 'YYYY MMM DD', locale);
+        console.log('nextBirthday:', nextBirthday.toString())
+
+        // calculate the difference between the current date and the next birthday
+        let diffDays = nextBirthday.diff(currentDate, 'days');
+
         // setting the default speakOutput to Happy xth Birthday!! 
         // Alexa will automatically correct the ordinal for you.
         // no need to worry about when to use st, th, rd
-        const age = currentYear - year;
-        let speakOutput = handlerInput.t('HAPPY_BIRTHDAY_MSG', {count: age});
-        if (currentDate.getTime() !== nextBirthday) {
-            const diffDays = Math.round(Math.abs((currentDate.getTime() - nextBirthday)/oneDay));
-            speakOutput = handlerInput.t('WELCOME_BACK_MSG', {count: diffDays, age: age});
+        let age = currentYear - year;
+        let speakOutput = handlerInput.t('HAPPY_BIRTHDAY_MSG', { age: age });
+
+        // checking if birthday is still to happen or...
+        if (diffDays > 0) {
+            speakOutput = handlerInput.t('WELCOME_BACK_MSG', { count: diffDays, age: age });
+        } 
+        // has already happened this year
+        else if (diffDays < 0) {
+            // in this case, add one year to the next birthday,
+            nextBirthday = nextBirthday.add(1, 'Y');
+            // recalculate the difference,
+            diffDays = nextBirthday.diff(currentDate, 'days')
+            // and add on extra year to the age
+            age++
+            speakOutput = handlerInput.t('WELCOME_BACK_MSG', { count: diffDays, age: age });
         }
-        
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -107,7 +115,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = handlerInput.t('WELCOME_MSG');
-        const repromptOutput = handlerInput.t('WELCOME_REPROMPT_MSG');   
+        const repromptOutput = handlerInput.t('WELCOME_REPROMPT_MSG');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -126,25 +134,26 @@ const BirthdayIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'CaptureBirthdayIntent';
     },
     async handle(handlerInput) {
-        const {attributesManager, requestEnvelope} = handlerInput;
+        const { attributesManager, requestEnvelope } = handlerInput;
 
         const year = Alexa.getSlotValue(requestEnvelope, 'year');
         const month = Alexa.getSlotValue(requestEnvelope, 'month');
         const day = Alexa.getSlotValue(requestEnvelope, 'day');
-        
+
         const birthdayAttributes = {
             "year": year,
             "month": month,
             "day": day
-            
+
         };
         attributesManager.setPersistentAttributes(birthdayAttributes);
-        await attributesManager.savePersistentAttributes();    
-        
-        const speakOutput = handlerInput.t('REGISTER_BIRTHDAY_MSG', {month: month, day: day, year:year});
+        await attributesManager.savePersistentAttributes();
+
+        const speakOutput = handlerInput.t('REGISTER_BIRTHDAY_MSG', { month: month, day: day, year: year });
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .withShouldEndSession(true) // force the skill to close the session after confirming the birthday date
             .getResponse();
     }
 };
@@ -156,7 +165,7 @@ const BirthdayIntentHandler = {
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-        && Alexa.getIntentName(handlerInput.requestEnvelope) ==='AMAZON.HelpIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
         const speakOutput = handlerInput.t('HELP_MSG');
@@ -213,7 +222,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = handlerInput.t('REFLECTOR_MSG', {intentName: intentName});
+        const speakOutput = handlerInput.t('REFLECTOR_MSG', { intentName: intentName });
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -251,16 +260,18 @@ const ErrorHandler = {
  */
 const LoggingRequestInterceptor = {
     process(handlerInput) {
-        console.log(`Incoming request: ${JSON.stringify(handlerInput.requestEnvelope)}`);
+        console.log("\n" + "********** REQUEST *********\n" +
+            JSON.stringify(handlerInput, null, 4));
     }
 };
 
 /**
- * This response interceptor will log all outgoing responses in the associated Logs (CloudWatch) of the AWS Lambda functions
+ * This response interceptor will log outgoing responses if any in the associated Logs (CloudWatch) of the AWS Lambda functions
  */
 const LoggingResponseInterceptor = {
     process(handlerInput, response) {
-        console.log(`Outgoing response: ${JSON.stringify(response)}`);
+        if (response) console.log("\n" + "************* RESPONSE **************\n"
+            + JSON.stringify(response, null, 4));
     }
 };
 
@@ -287,13 +298,13 @@ const LocalisationRequestInterceptor = {
  * */
 const LoadBirthdayInterceptor = {
     async process(handlerInput) {
-        const {attributesManager} = handlerInput;
+        const { attributesManager } = handlerInput;
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        
+
         const year = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : 0;
         const month = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : 0;
         const day = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : 0;
-        
+
         if (year && month && day) {
             attributesManager.setSessionAttributes(sessionAttributes);
         }
@@ -311,7 +322,7 @@ const LoadBirthdayInterceptor = {
  */
 exports.handler = Alexa.SkillBuilders.custom()
     .withPersistenceAdapter(
-        new persistenceAdapter.S3PersistenceAdapter({bucketName:process.env.S3_PERSISTENCE_BUCKET})
+        new persistenceAdapter.S3PersistenceAdapter({ bucketName: process.env.S3_PERSISTENCE_BUCKET })
     )
     .addRequestHandlers(
         HasBirthdayLaunchRequestHandler,
