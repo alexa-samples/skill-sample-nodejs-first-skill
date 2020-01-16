@@ -15,9 +15,8 @@ const i18n = require('i18next');
 // We import a language strings object containing all of our strings.
 // The keys for each string will then be referenced in our code, e.g. handlerInput.t('WELCOME_MSG')
 const languageStrings = require('./languageStrings');
-
-// We will use the moment.js package in order to make sure that we calculate the remaining days to the user's birthday correctly
-const moment = require('moment');
+// We will use the moment.js package in order to make sure that we calculate the date correctly
+const moment = require('moment-timezone');
 
 /////////////////////////////////
 // Handlers Definition
@@ -63,38 +62,39 @@ const HasBirthdayLaunchRequestHandler = {
         }
         console.log('userTimeZone', userTimeZone);
 
-        // getting the current date with the time
-        const locale = Alexa.getLocale(requestEnvelope);
-        const currentDateTime = new Date(new Date().toLocaleString(locale, { timeZone: userTimeZone }));
-        // removing the time from the date because it affects our difference calculation
-        const currentDate = moment(new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate()));
+        // getting the current date with the time set to the start of the day, aka 00:00AM
+        const currentDate = moment().tz(userTimeZone).startOf('day')
+        // getting the current year
         const currentYear = currentDate.year();
-
-        console.log('currentDateTime:', currentDateTime);
+        
         console.log('currentDate:', currentDate.toString());
-
+        
         // getting the next birthday
-        let dateStr = currentYear.toString() + ' ' + month + ' ' + day.toString();
+        const dateStr = currentYear.toString() + ' ' + month + ' ' + day.toString();
+        const locale = Alexa.getLocale(requestEnvelope);
         let nextBirthday = moment(dateStr, 'YYYY MMM DD', locale);
         console.log('nextBirthday:', nextBirthday.toString())
 
-        // check the difference between the current date and the next birthday
+        // calculate the difference between the current date and the next birthday
         let diffDays = nextBirthday.diff(currentDate, 'days');
 
         // setting the default speakOutput to Happy xth Birthday!! 
         // Alexa will automatically correct the ordinal for you.
         // no need to worry about when to use st, th, rd
         let age = currentYear - year;
-
         let speakOutput = handlerInput.t('HAPPY_BIRTHDAY_MSG', { age: age });
-        // checking if birthday still this year or
+
+        // checking if birthday is still to happen or...
         if (diffDays > 0) {
             speakOutput = handlerInput.t('WELCOME_BACK_MSG', { count: diffDays, age: age });
         } 
-        // has already happened
+        // has already happened this year
         else if (diffDays < 0) {
+            // in this case, add one year to the next birthday,
             nextBirthday = nextBirthday.add(1, 'Y');
+            // recalculate the difference,
             diffDays = nextBirthday.diff(currentDate, 'days')
+            // and add on extra year to the age
             age++
             speakOutput = handlerInput.t('WELCOME_BACK_MSG', { count: diffDays, age: age });
         }
@@ -260,21 +260,13 @@ const ErrorHandler = {
  */
 const LoggingRequestInterceptor = {
     process(handlerInput) {
-        const { requestEnvelope } = handlerInput;
-        const type = Alexa.getRequestType(requestEnvelope);
-        const locale = Alexa.getLocale(requestEnvelope);
-        if (type !== 'IntentRequest') {
-            console.log(`[INFO] ${type} (${locale})`);
-        } else {
-            console.log(`[INFO] ${handlerInput.requestEnvelope.request.intent.name} (${locale})`);
-        }
         console.log("\n" + "********** REQUEST *********\n" +
             JSON.stringify(handlerInput, null, 4));
     }
 };
 
 /**
- * This response interceptor will log all outgoing responses in the associated Logs (CloudWatch) of the AWS Lambda functions
+ * This response interceptor will log outgoing responses if any in the associated Logs (CloudWatch) of the AWS Lambda functions
  */
 const LoggingResponseInterceptor = {
     process(handlerInput, response) {
