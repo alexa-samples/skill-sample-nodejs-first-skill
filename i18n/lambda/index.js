@@ -16,6 +16,7 @@ const i18n = require('i18next');
 // The keys for each string will then be referenced in our code, e.g. handlerInput.t('WELCOME_MSG')
 const languageStrings = require('./languageStrings');
 
+// We will use the moment.js package in order to make sure that we calculate the remaining days to the user's birthday correctly
 const moment = require('moment');
 
 /////////////////////////////////
