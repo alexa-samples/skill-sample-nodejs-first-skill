@@ -9,7 +9,7 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello! Welcome to Cake walk. What is your birthday?';
+        const speakOutput = 'Hello! Welcome to Cake time. What is your birthday?';
         const repromptText = 'I was born Nov. 6th, 2014. When were you born?';    
 
         return handlerInput.responseBuilder

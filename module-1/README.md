@@ -1,14 +1,14 @@
-# Cake Walk
+# Cake Time
 
 ## Module 1: Build A Simple Skill In 5 Minutes
 
-The files in this folder represent how Calk Walk should appear at the end of this module. If you're stuck you can compare your files with these to figure out where you went wrong. You can also use these files to skip ahead.
+The files in this folder represent how Calk Time should appear at the end of this module. If you're stuck you can compare your files with these to figure out where you went wrong. You can also use these files to skip ahead.
 
-**If you are coming from the [Cake Walk Workshop](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/resources/training-resources/cake-walk)**: This folder maps to [Workshop Module 3](https://developer.amazon.com/alexa/alexa-skills-kit/resources/training-resources/cake-walk/cake-walk-3)
+**If you are coming from the [Tutorial: Build an Engaging Alexa Skill](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill)**: This folder maps to [Workshop Module 3](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill/module-3)
 
 ### Step-by-step Instructions
 
-You can find the instructions here: [Create a skill in 5 minutes](https://developer.amazon.com/alexa-skills-kit/courses/cake-walk-3)
+You can find the instructions here: [Create a skill in 5 minutes](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill/module-3)
 
 When you're ready check out [Module 2: Collect Slots Turn-by-turn](../module-2/README.md).
 

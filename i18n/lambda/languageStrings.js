@@ -8,7 +8,7 @@
 module.exports = {
     en: {
         translation: {
-            WELCOME_MSG: `Hello! Welcome to Cake walk. What is your birthday?`,
+            WELCOME_MSG: `Hello! Welcome to Cake time. What is your birthday?`,
             WELCOME_REPROMPT_MSG: `I was born Nov. 6th, 2014. When were you born?`,
             WELCOME_BACK_MSG: `Welcome back. It looks like there is {{count}} day until your {{age}}th birthday.`,
             WELCOME_BACK_MSG_plural: `Welcome back. It looks like there are {{count}} days until your {{age}}th birthday.`,
@@ -94,7 +94,7 @@ module.exports = {
     },
     "hi-IN": {
         translation: {
-            WELCOME_MSG: `नमस्ते. Cake Walk में आपका स्वागत. आपका जनमदिन कब हैं?`,
+            WELCOME_MSG: `नमस्ते. Cake time में आपका स्वागत. आपका जनमदिन कब हैं?`,
             WELCOME_REPROMPT_MSG: `मेरा जन्म 6 नवंबर, 2014 को हुआ था. आप कब पैदा हुए थे?`,
             WELCOME_BACK_MSG: `वापसी पर स्वागत है. आपके {{age}} वे जनमदिन तक {{count}} दिन हैं`,
             WELCOME_BACK_MSG_plural: `आपके {{age}} वे जनमदिन तक {{count}} दिन हैं`,
