@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello! Welcome to cake walk. That was a piece of cake! Bye!';
+        const speakOutput = 'Hello! Welcome to cake time. That was a piece of cake! Bye!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt(speakOutput)

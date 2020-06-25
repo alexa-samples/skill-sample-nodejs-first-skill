@@ -3,13 +3,13 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "Cake Walk"
+          "name": "Cake Time"
         },
         "en-GB": {
-          "name": "Cake Walk"
+          "name": "Cake Time"
         },
         "en-CA": {
-          "name": "Cake Walk"
+          "name": "Cake Time"
         },
         "fr-FR": {
           "name": "Joyeux Anniversaire"
@@ -24,10 +24,10 @@
           "name": "ケークウォーク"
         },
         "en-IN": {
-          "name": "cake walk"
+          "name": "cake time"
         },
         "hi-IN": {
-          "name": "cake walk"
+          "name": "cake time"
         },
         "es-ES": {
           "name": "feliz cumpleaños"
