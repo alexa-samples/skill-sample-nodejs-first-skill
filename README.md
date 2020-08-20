@@ -1,6 +1,6 @@
 # Workshop Building A Simple Skill
 
-This workshop is designed to teach you how to learn the core fundamentals of building an Alexa skill.It is modular so if you know the basics you can skip to the module that interests you the most. In this repository you will find the necessary JSON and code files for each module. 
+This workshop is designed to teach you how to learn the core fundamentals of building an Alexa skill. It is modular so if you know the basics you can skip to the module that interests you the most. In this repository you will find the necessary JSON and code files for each module. 
 
 # Step-by-step Instructions
 
