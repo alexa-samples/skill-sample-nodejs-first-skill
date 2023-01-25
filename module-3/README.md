@@ -2,7 +2,7 @@
 
 ## Module 3: Add Memory To Your Skill
 
-The files in this folder represent how Calk Time should appear at the end of this module. If you're stuck you can compare your files with these to figure out where you went wrong. You can also use these files to skip ahead.
+The files in this folder represent how Cake Time should appear at the end of this module. If you're stuck you can compare your files with these to figure out where you went wrong. You can also use these files to skip ahead.
 
 
 **If you are coming from the [Tutorial: Build an Engaging Alexa Skill](https://developer.amazon.com/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill)**: This folder maps to [Workshop Module 5](https://developer.amazon.com/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill/module-5)
